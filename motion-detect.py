@@ -1,12 +1,14 @@
 # -*- coding:utf8 -*-
 import opencv
 from opencv import highgui as hg
-capture = hg.cvCreateCameraCapture(0)
+
+capture= hg.cvCreateCameraCapture(0)
 hg.cvNamedWindow("Snapshot")
+
 frames = []
 for i in range(10):
 	frame = hg.cvQueryFrame(capture)
-	frames.append(frame)
+	frames.append(opencv.cvClone(frame))
 	hg.cvShowImage("Snapshot", frame)
 hg.cvWaitKey(1000)
 
@@ -23,3 +25,4 @@ from IPython.Shell import IPShellEmbed
 IPShellEmbed()()
 hg.cvWaitKey(10000)
 """
+
